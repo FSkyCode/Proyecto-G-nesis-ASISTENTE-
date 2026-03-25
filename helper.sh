@@ -1,12 +1,46 @@
+# -- IMPORTANTE --
+
+# RAIZ DEL PROYECTO
+ROOT_VISUAL="Proyecto-G-nesis-ASISTENTE-"
+
+SKYsystemFSC() {
+  PS1='\[\e[32m\][Genesis]\[\e[0m\]$(relative_path) > ' # Es la terminal lol
+  # QUITAR SUGERENCIAS
+  unset command_not_found_handle # No funciono
+  save
+  echo "SKYBOT: Terminal lista"
+}
+
+relative_path() {
+  local current="$(pwd)"
+  echo "${current#$ROOT_VISUAL}"
+}
+
 reload() {
   source ~/.bashrc
 }
 
+# ++ IMPORTANTE ++
+
+# ALIAS
+
 alias sd='skycd'
 
-SKYSYSTEM() {
-  source system.sh
+# ACCESO RAPIDO
+
+blue() {
+  echo "Es para pc lol"
+  skycd REPOSITORIOS/Proyecto-G-nesis-ASISTENTE-
 }
+
+sky() {
+  skycd /storage/emulated/0/REPOSITORIOS/Proyecto-G-nesis-ASISTENTE- || return
+  save
+  echo "USUARIO: SkyMovil ENTRANDO A: PROYECTO-G-NESIS-ASISTENTE-"
+  echo "Listo :D"
+}
+
+# COMANDOS RAPIDOS
 
 skycd() {
   if [ -z "$1" ]; then
@@ -19,41 +53,30 @@ skycd() {
     return
   }
 
-  echo -e "\e[32mEstas en $(pwd)\e[0m"
-  echo -e "\e[34mArchivos:\e[0m"
-  ls -a
+  if [[ $- == *i* ]]; then
+    echo -e "\e[32mEstas en $(pwd)\e[0m"
+    echo -e "\e[34mArchivos:\e[0m"
+    ls -a
+  fi
 }
-
-blue() {
-  echo "Es para pc lol"
-}
-
-sky() {
-  cd /storage/emulated/0/SKYCARPETA || return
-  save
-  echo ""
-  echo "Revisando la biblioteca..."
-  ls
-  echo "Listo :D"
-}
-
-
 
 back() {
   echo "Saliendo..."
-  cd ..
+  skycd ..
   echo "Ya saliste, pero ve a salir pasto pinshe loco :V"
 }
 
-at() {
+atajo() {
   echo "Atajo fuaaa"
-  cd -
+  skycd -
   echo "Atajo finalizado... y si, hablando de momos, se acabaron los momos"
 }
 
+# COMANDOS GITHUB (CARGAR Y GUARDAR)
+
 save() {
   cd /storage/emulated/0/SKYCARPETA || {
-    echo "Lugar equivocado niño, o chico sin genero, pero decirte 'chico sin genero' ya asumo que tienes genero entonces... lugar equivocado, ?";
+    echo "Lugar equivocado niño, o chico sin gene>
     return;
     }
   echo "Sincronizando lol"
@@ -61,11 +84,12 @@ save() {
   echo "Listo, ahora guardando"
   git add . > /dev/null &&
   echo "Generando un commit todo zzz"
-  git commit -m "Auto update" > /dev/null || echo "Ey ey, estoy haciendo aogo aqui; No es cierto, no estas haciendo nada!"
+  git commit -m "Auto update" > /dev/null || echo>
   echo "Subiendo la wea"
   git push > /dev/null  &&
   echo "Listo xD"
 }
+
 saveAndExit() {
   echo "Guardando y saliendo, ten cuidado!"
   save
