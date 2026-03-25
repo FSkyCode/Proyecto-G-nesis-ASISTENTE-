@@ -1,9 +1,9 @@
 # Adan.sh
 
 # ====== CONFIG ======
-MEMORIA="$HOME/AdanLab/.brain_data"
-NOTAS="$HOME/AdanLab/Notas"
-COLEGIO="$HOME/AdanLab/Colegio"
+MEMORIA="Adan/.brain_data"
+NOTAS="Adan/Notas"
+COLEGIO="Adan/Colegio"
 # Crear carpetas si no existen
 mkdir -p "$NOTAS"
 mkdir -p "$COLEGIO"

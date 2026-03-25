@@ -1,8 +1,8 @@
 # -- IMPORTANTE --
 #!/bin/bash
 
-source /Adan/Adan.sh
-source /Eva/Eva.sh
+source Adan/Adan.sh
+source Eva/Eva.sh
 
 SKYsystemFSC() {
   echo "🌍 Genesis iniciado"
@@ -14,7 +14,7 @@ SKYsystemFSC() {
     texto=$(echo "$cmd" | tr 'A-Z' 'a-z')
 
     # apagar sistema
-    if [[ "$texto" == "off" ]]; then
+    if [[ "$texto" == "Apagar" ]]; then
       echo "🧠 Apagando Genesis..."
       pkill -f brain
       break
