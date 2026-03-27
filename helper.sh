@@ -35,4 +35,7 @@ SKYsystemFSC() {
   done
 }
 
+reload() {
+  source helper.sh
+}
 # ++ IMPORTANTE ++

@@ -25,7 +25,7 @@ auto_mv() {
   archivo="$1"
 
   if [ ! -f "$archivo" ]; then
-    echo "Ese archivo no existe bro 😐"
+    echo "Adan: Ese archivo no existe..."
     return
   fi
 
@@ -34,7 +34,7 @@ auto_mv() {
 
   # 2. Si no hay, buscar coincidencia parcial
   if [ -z "$destino" ]; then
-    clave=$(echo "$archivo" | cut -c1-5)
+    clave=$(echo "Adan: $archivo" | cut -c1-5)
     destino=$(grep -i "$clave" "$MEMORIA" | tail -n 1 | cut -d "|" -f2)
   fi
 
@@ -42,13 +42,13 @@ auto_mv() {
   if [ -z "$destino" ]; then
     if [[ "$archivo" == *Tarea* ]]; then
       destino="$COLEGIO"
-      echo "Regla detectada: Tarea → Colegio"
+      echo "Adan: Regla detectada: Tarea → Colegio"
     else
       destino="$NOTAS"
-      echo "Sin datos → Notas"
+      echo "Adan: Sin datos → Notas"
     fi
   else
-    echo "Aprendido → $destino"
+    echo "Adan: Aprendido → $destino"
   fi
 
   # 4. Mover archivo
@@ -64,7 +64,7 @@ mv() {
   destino="$2"
 
   # Guardar lo que haces manualmente
-  echo "$origen|$destino" >> "$MEMORIA"
+  echo "Adan: Aprendi... $origen|$destino" >> "$MEMORIA"
 
   # Ejecutar mv real
   command mv "$@"
@@ -72,7 +72,7 @@ mv() {
 
 # ====== BRAIN LOOP (OPCIONAL) ======
 brain() {
-  echo "Brain activo 🧠..."
+  echo "Adan Activo...."
 
   while true; do
     sleep 30
@@ -91,12 +91,20 @@ vigilador() {
 
     grep -q "^$archivo|" "$MEMORIA" && continue
 
-    echo "🧠 Detectado: $archivo"
+    echo "Adan: Detectando archivo $archivo"
     auto_mv "$archivo"
 
   done
 }
 
 command_not_found_handle() {
-  echo "🧠 No entendí eso..."
+  mensajes=(
+    "Adan: No entendí eso..."
+    "Adan: ..."
+    "Adan: Eso no tiene sentido..."
+    "Adan: Intenta otro comando o... Lo que sea..."
+    "Adan: ... ¿Es una prueba o test?... No entendi..."
+  )
+
+  echo "${mensajes[$RANDOM % ${#mensajes[@]}]}"
 }
